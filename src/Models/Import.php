@@ -21,6 +21,16 @@ class Import
 	}
 	
     /**
+     * Set the content of the file
+     *
+     * @param $contents
+     * @return void
+     */
+    public function set_contents($contents){
+		$this->contents = $contents;
+	}
+	
+    /**
      * Save the import file to the server
      *
      * @return void
@@ -33,6 +43,7 @@ class Import
     /**
      * Save the import file to the server
      *
+     * @param $file
      * @return void
      */
 	public function import(File $file){

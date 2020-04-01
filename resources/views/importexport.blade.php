@@ -8,7 +8,7 @@
 		</h2>
     </div>
     @include('admin::partials.alerts')
-	<form action="{{ route('admin.modules.dutytax') }}" method="post" class="flex flex-wrap">
+	<form action="{{ route('admin.modules.importexport') }}" method="post" class="flex flex-wrap mb-8">
 		@csrf
 		<div class="card mt-4 w-full">
 			<h3>Import-Export settings</h3>
@@ -26,7 +26,7 @@
 	</form>
 	
 	<h3>Import Routines</h3>
-	<form action="{{ route('admin.modules.dutytax') }}" method="post" class="flex flex-wrap">
+	<form action="{{ route('admin.modules.importexport') }}" method="post" class="flex flex-wrap mb-8">
 		@csrf
 		<div class="card mt-4 w-full">
 			<h3>Import all products</h3>
@@ -41,7 +41,7 @@
 		
 	
 	<h3>Export Routines</h3>
-	<form action="{{ route('admin.modules.dutytax') }}" method="post" class="flex flex-wrap">
+	<form action="{{ route('admin.modules.importexport') }}" method="post" class="flex flex-wrap mb-8">
 		@csrf
 		<div class="card mt-4 w-full">
 			<h3>Export all products</h3>
@@ -54,7 +54,7 @@
 		<div class="card mt-4 p-4 w-full flex flex-wrap"><button type="submit" class="btn btn-secondary">Save</button> </div>
 	</form>
 	
-	<form action="{{ route('admin.modules.dutytax') }}" method="post" class="flex flex-wrap">
+	<form action="{{ route('admin.modules.importexport') }}" method="post" class="flex flex-wrap mb-8">
 		@csrf
 		<div class="card mt-4 w-full">
 			<h3>Export stock &amp; prices</h3>
@@ -67,7 +67,7 @@
 		<div class="card mt-4 p-4 w-full flex flex-wrap"><button type="submit" class="btn btn-secondary">Save</button> </div>
 	</form>
 	
-	<form action="{{ route('admin.modules.dutytax') }}" method="post" class="flex flex-wrap">
+	<form action="{{ route('admin.modules.importexport') }}" method="post" class="flex flex-wrap mb-8">
 		@csrf
 		<div class="card mt-4 w-full">
 			<h3>Export fine wine</h3>
