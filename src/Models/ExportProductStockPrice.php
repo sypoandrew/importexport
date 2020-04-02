@@ -103,7 +103,7 @@ class ExportProductStockPrice extends Export
 					}
 				}
 				
-				$url_path = '';
+				$url_path = $product->getUrl();
 				
 				#dd($variants);
 				foreach($variants as $variant){

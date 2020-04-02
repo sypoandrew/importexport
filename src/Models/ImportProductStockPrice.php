@@ -18,7 +18,7 @@ class ImportProductStockPrice extends Import
 		$output = $this->path.'aero_transformed_'.$this->filename;
 		
 		#re-work file from Magento format to Aero format
-		\Artisan::call('transform:csv', [
+		\Artisan::call('transform:productstockprice', [
 			'path' => $input, 
 			'output' => $output
 		]);
