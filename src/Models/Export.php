@@ -11,6 +11,7 @@ use Sypo\ImportExport\Models\ImportExport;
 
 class Export
 {
+	protected $language;
 	protected $file;
 	protected $filename;
 	protected $path;
@@ -24,6 +25,7 @@ class Export
      * @return void
      */
     public function __construct(){
+        $this->language = config('app.locale');
 		$this->get_tag_groups();
 		$this->path = 'importexport/export/';
 	}
@@ -37,8 +39,11 @@ class Export
 		try{
 			Storage::put($this->path.$this->filename, $this->contents);
 			
+			$user = \Auth::user();
 			$log = new ImportExport;
-			$log->user_id = \Auth::user()->id;
+			if($user){
+				$log->user_id = $user->id;
+			}
 			$log->code = $this->code;
 			$log->save();
 		}
@@ -48,18 +53,14 @@ class Export
 	}
 	
     /**
-     * Save the export file to the server
+     * Clean the description for CSV output
      *
-     * @return void
+     * @param string $desc
+     * @return string
      */
-	public function export(){
-		
-		#generate export...
-		
-		#save a copy locally
-		$this->save();
-		
-		#send file to user...
+	protected function clean_description($desc){
+		$desc = str_replace(["\r", "\n", "\t"], '', $desc);
+		return $desc;
 	}
 
     /**

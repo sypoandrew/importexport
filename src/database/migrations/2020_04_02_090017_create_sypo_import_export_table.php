@@ -15,7 +15,7 @@ class CreateSypoImportExportTable extends Migration
     {
         Schema::create('sypo_import_export', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('code');
             $table->timestamps();
 			
