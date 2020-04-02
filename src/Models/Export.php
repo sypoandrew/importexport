@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Aero\Catalog\Models\TagGroup;
+use Sypo\ImportExport\Models\ImportExport;
 
 
 class Export
@@ -15,6 +16,7 @@ class Export
 	protected $path;
 	protected $headers;
 	protected $tag_groups;
+	protected $code = 'export';
 	
     /**
      * Create a new command instance.
@@ -34,6 +36,11 @@ class Export
 	public function save(){
 		try{
 			Storage::put($this->path.$this->filename, $this->contents);
+			
+			$log = new ImportExport;
+			$log->user_id = \Auth::user()->id;
+			$log->code = $this->code;
+			$log->save();
 		}
 		catch(RunTimeException $e){
 			Log::warning($e);

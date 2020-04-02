@@ -26,6 +26,7 @@ class ServiceProvider extends ModuleServiceProvider
             $group->boolean('enabled')->default(true);
         });
 		
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 		$this->loadViewsFrom(__DIR__ . '/../../resources/views/', 'importexport');
     }
 }

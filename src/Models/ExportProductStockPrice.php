@@ -7,13 +7,16 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Sypo\ImportExport\Models\Export;
 use Aero\Catalog\Models\Product;
+use Carbon\Carbon;
 
 
 class ExportProductStockPrice extends Export
 {
+	protected $code = 'product_stock_price_export';
+	
 	public function __construct(){
 		parent::__construct();
-		$timestamp = date("y-m-d-H-i");
+		$timestamp = Carbon::now()->format('y-m-d-H-i');
 		$this->filename = 'product_stock_price_export-'.$timestamp.'.csv';
 		$this->contents = $this->get_contents();
 		$this->save();
