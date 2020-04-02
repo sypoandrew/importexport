@@ -8,9 +8,12 @@ use Illuminate\Support\Facades\Storage;
 
 class Import
 {
+	protected $language;
 	protected $file;
 	protected $filename;
 	protected $contents;
+	protected $path = 'importexport/import/';
+	protected $code = 'import';
 	
     /**
      * Create a new command instance.
@@ -18,16 +21,7 @@ class Import
      * @return void
      */
     public function __construct(){
-	}
-	
-    /**
-     * Set the content of the file
-     *
-     * @param $contents
-     * @return void
-     */
-    public function set_contents($contents){
-		$this->contents = $contents;
+        $this->language = config('app.locale');
 	}
 	
     /**
@@ -36,8 +30,20 @@ class Import
      * @return void
      */
 	public function save(){
-		
-		Storage::put($this->path.$this->filename, $this->contents);
+		try{
+			Storage::put($this->path.$this->filename, $this->contents);
+			
+			$user = \Auth::user();
+			$log = new ImportExport;
+			if($user){
+				$log->user_id = $user->id;
+			}
+			$log->code = $this->code;
+			$log->save();
+		}
+		catch(RunTimeException $e){
+			Log::warning($e);
+		}
 	}
 	
     /**

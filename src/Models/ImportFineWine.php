@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Sypo\ImportExport\Models\Import;
 
-class ImportAllProducts extends Import
+class ImportFineWine extends Import
 {
 	public function __construct(){
 		parent::__construct();
 		
-		$this->filename = 'all_products_export-20-04-02-12-48.csv';
+		$this->filename = 'vinquinn_fine_wine_export-20-04-02-12-36.csv';
 		
 		$input = $this->path.$this->filename;
 		$output = $this->path.'aero_transformed_'.$this->filename;

@@ -14,9 +14,7 @@ class Export
 	protected $language;
 	protected $file;
 	protected $filename;
-	protected $path;
-	protected $headers;
-	protected $tag_groups;
+	protected $path = 'importexport/export/';
 	protected $code = 'export';
 	
     /**
@@ -26,8 +24,6 @@ class Export
      */
     public function __construct(){
         $this->language = config('app.locale');
-		$this->get_tag_groups();
-		$this->path = 'importexport/export/';
 	}
 	
     /**
@@ -62,24 +58,4 @@ class Export
 		$desc = str_replace(["\r", "\n", "\t"], '', $desc);
 		return $desc;
 	}
-
-    /**
-     * Get all required tag groups for importing tag data
-     *
-     * @return Aero\Catalog\Models\TagGroup
-     */
-    protected function get_tag_groups()
-    {
-		if($this->tag_groups){
-			return $this->tag_groups;
-		}
-		$groups = TagGroup::get();
-		
-		$this->tag_groups = [];
-		foreach($groups as $g){
-			$this->tag_groups[$g->name] = $g;
-		}
-		#Log::debug($this->tag_groups);
-		return $this->tag_groups;
-    }
 }
