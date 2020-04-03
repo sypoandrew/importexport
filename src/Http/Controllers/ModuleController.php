@@ -33,7 +33,7 @@ class ModuleController extends Controller
     {
 		$res = ['success'=>false,'data'=>false,'error'=>[]];
 		
-        return redirect(route('admin.modules.importexport'));
+        return redirect()->back()->with('message', 'Settings updated.');
     }
     
 	/**
