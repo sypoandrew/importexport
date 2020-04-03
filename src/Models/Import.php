@@ -36,7 +36,7 @@ class Import
 			$user = \Auth::user();
 			$log = new ImportExport;
 			if($user){
-				$log->user_id = $user->id;
+				$log->admin_id = $user->id;
 			}
 			$log->code = $this->code;
 			$log->save();

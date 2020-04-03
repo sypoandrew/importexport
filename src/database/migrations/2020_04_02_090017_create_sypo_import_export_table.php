@@ -15,12 +15,13 @@ class CreateSypoImportExportTable extends Migration
     {
         Schema::create('sypo_import_export', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedInteger('admin_id')->nullable();
             $table->string('code');
+            $table->boolean('processed')->default(0);
             $table->timestamps();
 			
 			$table->index('code');
-			$table->foreign('user_id')->references('id')->on('users');
+			$table->foreign('admin_id')->references('id')->on('admins');
         });
     }
 

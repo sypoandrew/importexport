@@ -38,10 +38,33 @@ class Export
 			$user = \Auth::user();
 			$log = new ImportExport;
 			if($user){
-				$log->user_id = $user->id;
+				$log->admin_id = $user->id;
 			}
 			$log->code = $this->code;
 			$log->save();
+		}
+		catch(RunTimeException $e){
+			Log::warning($e);
+		}
+	}
+	
+    /**
+     * Get the location of the export file
+     *
+     * @return string
+     */
+	public function get_location(){
+		return $this->path.$this->filename;
+	}
+	
+    /**
+     * Download the export file
+     *
+     * @return File
+     */
+	public function download(){
+		try{
+			return Storage::download($this->path.$this->filename);
 		}
 		catch(RunTimeException $e){
 			Log::warning($e);

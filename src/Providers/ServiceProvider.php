@@ -9,7 +9,9 @@ use Aero\Common\Settings\SettingGroup;
 
 class ServiceProvider extends ModuleServiceProvider
 {
-    protected $commands = [];
+    protected $commands = [
+		'\Aero\DataPort\Commands\ImportProductsCSVCommand'
+	];
     
     public function register(): void 
     {
@@ -18,6 +20,8 @@ class ServiceProvider extends ModuleServiceProvider
             ->summary('Custom import and export routines for Aero Commerce')
             ->routes(__DIR__ .'/../../routes/admin.php')
             ->route('admin.modules.importexport');
+        
+        $this->commands($this->commands);
     }
 	
     public function boot(): void 

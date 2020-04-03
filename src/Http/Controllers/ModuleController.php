@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Aero\Admin\Facades\Admin;
 use Aero\Admin\Http\Controllers\Controller;
+use Sypo\ImportExport\Models\ExportProductStockPrice;
+use Sypo\ImportExport\Models\ExportFineWine;
+use Sypo\ImportExport\Models\ExportAllProducts;
 
 class ModuleController extends Controller
 {
@@ -32,4 +35,37 @@ class ModuleController extends Controller
 		
         return redirect(route('admin.modules.importexport'));
     }
+    
+	/**
+     * Process and get the "all products" export file
+     *
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
+    public function get_export_all_products(Request $request)
+    {
+		$e = new ExportAllProducts;
+		return response()->download(storage_path('app/'.$e->get_location()));
+    }
+    
+	/**
+     * Process and get the "fine wine" export file
+     *
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
+    public function get_export_fine_wine(Request $request)
+    {
+		$e = new ExportFineWine;
+		return response()->download(storage_path('app/'.$e->get_location()));
+	}
+    
+	/**
+     * Process and get the "product stock price" export file
+     *
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
+    public function get_export_product_stock_price(Request $request)
+    {
+		$e = new ExportProductStockPrice;
+		return response()->download(storage_path('app/'.$e->get_location()));
+	}
 }

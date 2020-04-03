@@ -15,7 +15,7 @@
 			<div class="mt-4 w-full">
 			<label for="enabled" class="block">
 			<label class="checkbox">
-			<input type="checkbox" id="enabled" name="enabled" value="1">
+			<input type="checkbox" id="enabled" name="enabled" checked="checked" value="1">
 			<span></span>
 			</label>Enabled
 			</label>
@@ -24,7 +24,7 @@
 		
 		<div class="card mt-4 p-4 w-full flex flex-wrap"><button type="submit" class="btn btn-secondary">Save</button> </div>
 	</form>
-	
+	<!--
 	<h3>Import Routines</h3>
 	<form action="{{ route('admin.modules.importexport') }}" method="post" class="flex flex-wrap mb-8">
 		@csrf
@@ -37,47 +37,44 @@
 		</div>
 		
 		<div class="card mt-4 p-4 w-full flex flex-wrap"><button type="submit" class="btn btn-secondary">Save</button> </div>
-	</form>
+	</form>-->
 		
 	
-	<h3>Export Routines</h3>
-	<form action="{{ route('admin.modules.importexport') }}" method="post" class="flex flex-wrap mb-8">
+	<h2>Export Routines</h2>
+	<form action="{{ route('admin.modules.importexport.get_export_all_products') }}" method="get" class="flex flex-wrap mb-8">
 		@csrf
-		<div class="card mt-4 w-full">
-			<h3>Export all products</h3>
-			<div class="mt-4 w-full">
-			<label for="export_all_products_file" class="block">Select file:</label>
-			<input type="text" id="export_all_products_file" name="export_all_products_file" autocomplete="off" required="required" class="w-full " value="">
-			</div>
-		</div>
 		
-		<div class="card mt-4 p-4 w-full flex flex-wrap"><button type="submit" class="btn btn-secondary">Save</button> </div>
+		<div class="card mt-4 p-4 w-full flex flex-wrap">
+			<h3 class="w-full">Export all products</h3>
+			<p>Full export of all Aero Commerce products. Output in Magento format.</p>
+		</div>
+		<div class="card mt-4 p-4 w-full flex flex-wrap">
+			<button type="submit" class="btn btn-secondary">Export</button>
+		</div>
 	</form>
 	
-	<form action="{{ route('admin.modules.importexport') }}" method="post" class="flex flex-wrap mb-8">
+	<form action="{{ route('admin.modules.importexport.get_export_fine_wine') }}" method="get" class="flex flex-wrap mb-8">
 		@csrf
-		<div class="card mt-4 w-full">
-			<h3>Export stock &amp; prices</h3>
-			<div class="mt-4 w-full">
-			<label for="export_all_products_file" class="block">Select file:</label>
-			<input type="text" id="export_all_products_file" name="export_all_products_file" autocomplete="off" required="required" class="w-full " value="">
-			</div>
-		</div>
 		
-		<div class="card mt-4 p-4 w-full flex flex-wrap"><button type="submit" class="btn btn-secondary">Save</button> </div>
+		<div class="card mt-4 p-4 w-full flex flex-wrap">
+			<h3 class="w-full">Export fine wine</h3>
+			<p>Export of all active in-stock Aero Commerce products. Output in Magento format. Reduced columns suitable for sending to clients.</p>
+		</div>
+		<div class="card mt-4 p-4 w-full flex flex-wrap">
+			<button type="submit" class="btn btn-secondary">Export</button>
+		</div>
 	</form>
 	
-	<form action="{{ route('admin.modules.importexport') }}" method="post" class="flex flex-wrap mb-8">
+	<form action="{{ route('admin.modules.importexport.get_export_product_stock_price') }}" method="get" class="flex flex-wrap mb-8">
 		@csrf
-		<div class="card mt-4 w-full">
-			<h3>Export fine wine</h3>
-			<div class="mt-4 w-full">
-			<label for="export_fine_wine_file" class="block">Select file:</label>
-			<input type="text" id="export_fine_wine_file" name="export_fine_wine_file" autocomplete="off" required="required" class="w-full " value="">
-			</div>
-		</div>
 		
-		<div class="card mt-4 p-4 w-full flex flex-wrap"><button type="submit" class="btn btn-secondary">Save</button> </div>
+		<div class="card mt-4 p-4 w-full flex flex-wrap">
+			<h3 class="w-full">Export product, stock &amp; prices</h3>
+			<p>Export of all active AG in-stock Aero Commerce products. Output in Magento format. Reduced columns for updating key information only.</p>
+		</div>
+		<div class="card mt-4 p-4 w-full flex flex-wrap">
+			<button type="submit" class="btn btn-secondary">Export</button>
+		</div>
 	</form>
 		
 @endsection
