@@ -32,11 +32,11 @@ class ImportExport extends Model
     */
 
 	/**
-	 * Get the user of the division_user.
+	 * Get the admin user
 	 */
-	public function user()
+	public function admin()
 	{
-		return $this->belongsTo('App\User', 'user_id');
+		return $this->belongsTo('Aero\Admin\Models\Admin', 'admin_id');
 	}
 
     /*
