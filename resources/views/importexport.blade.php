@@ -8,25 +8,11 @@
 		</h2>
     </div>
     @include('admin::partials.alerts')
-	<form action="{{ route('admin.modules.importexport') }}" method="post" class="flex flex-wrap mb-8">
-		@csrf
-		<div class="card mt-4 w-full">
-			<h3>Import-Export settings</h3>
-			<div class="mt-4 w-full">
-			<label for="enabled" class="block">
-			<label class="checkbox">
-			<input type="checkbox" id="enabled" name="enabled" checked="checked" value="1">
-			<span></span>
-			</label>Enabled
-			</label>
-			</div>
+	<h2>Import Routines</h2>
+		<div class="card mt-4 mb-4 p-4 w-full flex flex-wrap">
+			<p>TBC</p>
 		</div>
-		
-		<!--<div class="card mt-4 p-4 w-full flex flex-wrap"><button type="submit" class="btn btn-secondary">Save</button> </div>-->
-		<div class="card mt-4 p-4 w-full flex flex-wrap"><p>Please contact SYPO to update these settings.</p></div>
-	</form>
 	<!--
-	<h3>Import Routines</h3>
 	<form action="{{ route('admin.modules.importexport') }}" method="post" class="flex flex-wrap mb-8">
 		@csrf
 		<div class="card mt-4 w-full">

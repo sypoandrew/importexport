@@ -54,16 +54,13 @@ class Import
      */
 	public function import(File $file){
 		
-		if(setting('ImportExport.enabled')){
-			
-			#check file in correct format
-			
-			
-			#save local copy of file
-			$this->save();
-			
-			#handle import routine
-			
-		}
+		#check file in correct format
+		
+		
+		#save local copy of file
+		$this->save();
+		
+		#handle import routine
+		
 	}
 }
